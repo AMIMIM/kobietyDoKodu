@@ -2,6 +2,7 @@ package org.cat.application;
 
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -11,15 +12,13 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Logger;
-
 import org.cat.domain.Kot;
 
 public class InterfejsCat extends CatDAO{
 //	protected final static Logger log = Logger.getLogger(InterfejsCat.class);
 	static Scanner sc = new Scanner(System.in);
 	
+	private static SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
 	private static String typeName;
 	private static String typeMenu;
 	private static final String patOpiekunPattern = ("([A-Z]{1,1})[a-z]{1}");
@@ -88,8 +87,8 @@ public class InterfejsCat extends CatDAO{
 			typeName = getUserInput();
 			if(Pattern.matches(datePattern, typeName)==true){
 				try {
-					kot.setData_urodzenia(LocalDate.parse(typeName, f));
-				}catch(DateTimeException e){
+					kot.setData_urodzenia(sdf.parse(typeName));
+				}catch(ParseException e){
 					System.out.print("Kiedy ten bydla się urodził?!: ");
 				}
 			}

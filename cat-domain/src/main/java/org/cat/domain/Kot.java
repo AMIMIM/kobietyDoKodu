@@ -3,11 +3,33 @@ package org.cat.domain;
 import java.time.LocalDate;
 import java.util.Date;
 
+import javax.annotation.Generated;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="koty")
 public class Kot {
 	 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id")
+	public Long id;
+	
+	@Column(name="imie")
 	private String imie;
-	private LocalDate data_urodzenia;
+	
+	@Column(name="data")
+	private Date data_urodzenia;
+	
+	@Column(name="waga")
 	private double waga;
+	
+	@Column(name="IMIEOPIEKUNA")
 	private String opiekun_name;
 	
 	public String getImie() {
@@ -16,11 +38,11 @@ public class Kot {
 	public void setImie(String imie) {
 		this.imie = imie;
 	}
-	public LocalDate getData_urodzenia() {
+	public Date getData_urodzenia() {
 		return data_urodzenia;
 	}
-	public void setData_urodzenia(LocalDate data) {
-		this.data_urodzenia = data;
+	public void setData_urodzenia(Date date) {
+		this.data_urodzenia = date;
 	}
 	public double getWaga() {
 		return waga;
@@ -48,7 +70,7 @@ public class Kot {
 	public static void main(String[] args) {
 		Kot kot = new Kot();
 		kot.setImie("Śmierdziel");
-		kot.setData_urodzenia(LocalDate.now());
+		kot.setData_urodzenia(new Date());
 		kot.setWaga(100.0);
 		kot.setOpiekun_name("Jakiś debol");
 		
