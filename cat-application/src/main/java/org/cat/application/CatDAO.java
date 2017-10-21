@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.cat.domain.Kot;
 import org.springframework.stereotype.Repository;
@@ -28,18 +29,27 @@ public class CatDAO{
 	
 	@Transactional
 	public List<Kot> dodajKota(Kot kot) {
-		System.out.println("Dodaję kota!");
-		kotList.add(kot);
+//		kotList.add(kot);
+		e.merge(kot);
+		System.out.println("Dodaję kota: " + kot.getAllIfnomration());
 		return kotList;
 	}
 	
+	@Transactional
 	public List<Kot> getKoty() {
+		Query query = e.createQuery("Select * from koty");
+		kotList = query.getResultList();
+		System.out.println("Ilość pobranych kotów z bazy to: " + kotList.size());
 		return kotList;
 	}
 	
+	@Transactional
 	public Kot getKotById(Integer id) {
+		Kot kot = new Kot();
 		if (id<kotList.size()) {
-			return kotList.get(id);
+			kot = e.find(Kot.class, 1L);
+			System.out.println("Wybrany kot: " + kot.getAllIfnomration());
+			return kot;	
 		} else {
 			return null;
 		}

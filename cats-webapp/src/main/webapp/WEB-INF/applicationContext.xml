@@ -48,8 +48,8 @@
 		<property name="packagesToScan" value="pl.kobietydokodu.model" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-				<property name="showSql" value="false" />
-				<property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
+				<property name="showSql" value="true" />
+				<property name="databasePlatform" value="org.hibernate.dialect.Oracle10gDialect" />
 			</bean>
 		</property>
 		<property name="jpaProperties">
