@@ -7,6 +7,9 @@
         <dependent-module archiveName="cat-application-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/cat-application/cat-application">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="cat-domain-0.0.2-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/cat-domain/cat-domain">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="cats-webapp"/>
         <property name="java-output-path" value="/cats-webapp/target/classes"/>
     </wb-module>
